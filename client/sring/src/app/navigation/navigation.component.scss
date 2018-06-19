@@ -1,0 +1,21 @@
+@import 'dass';
+
+.nav {
+    @include _(display, flex);
+    @include _(justify-content, center);
+    @include _(align-items, center);
+    @include _(padding, 20px 0);
+    @include _(position, absolute);
+    @include _(width, 100%);
+
+    &__item {
+        @include _(font-size, 24px);
+        @include _(margin, 0 20px);
+        @include _(text-decoration, uppercase);
+        @include _(color, gray);
+
+        &--active {
+            @include _(color, olive);
+        }
+    }
+}

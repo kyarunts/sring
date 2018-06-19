@@ -1,0 +1,33 @@
+$mapBreakpoints: (
+    desktop-view: (start: 1024px, end: null),
+    tablet-view: (start: 550px, end: 1023px),
+    mobile-view: (start: null, end: 549px),
+    
+    mobile-tablet-view: (start: null, end: 1023px),
+    tablet-desktop-view: (start: 550px, end: null),
+);
+
+$mapVariables: (
+
+    /*COLORS*/
+    mine-shaft: '#292929',
+    lightning-yellow: '#FFC818',
+    river-bed: '#4c5b5c',
+    
+    /*FONT FAMILIES*/
+    open-sans: "'OpenSans', 'Open Sans', sans-serif",
+    catamaran: "'Catamaran', sans-serif",
+    gudea: "'Gudea', sans-serif",
+    play: "'Play', sans-serif",
+    cantarell: "'Cantarell', sans-serif",
+    assistant: "'Assistant', sans-serif",
+    quicksand: "'Quicksand', sans-serif",
+    
+    /*FONT WEIGHTS*/
+	light: 300,
+	regular: 400,
+    semibold: 600,
+
+    /*WIDTHS AND HEIGHTS*/
+    modal-container-width: '1024px',
+);

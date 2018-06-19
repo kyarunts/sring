@@ -1,0 +1,12 @@
+@import 'dass';
+
+body, p {
+    @include _(margin, 0);
+    @include _(font-family, assistant);
+}
+
+a {
+    @include _(text-decoration, none);
+    @include _(cursor, pointer);
+}
+

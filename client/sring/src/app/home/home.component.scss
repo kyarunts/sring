@@ -1,0 +1,12 @@
+@import 'dass';
+
+.home {
+
+    &__header {
+        background: url('https://images.unsplash.com/photo-1523920290228-4f321a939b4c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42e05c4b536f7f1d61f15792562001dd&auto=format&fit=crop&w=2256&q=80');
+        @include _(background-size, cover);
+        @include _(background-position, center);
+        @include _(height, 70vh);
+    }
+
+}

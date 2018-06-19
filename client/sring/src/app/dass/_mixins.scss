@@ -1,0 +1,242 @@
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;
+
+$placeholders: ();
+
+@mixin breakpoint($breakpoint) {
+	$value: map-get($mapBreakpoints, $breakpoint);
+	@if $value != null {
+		$current-breakpoint: $breakpoint !global;
+		$start: map-get($value, start);
+		$end: map-get($value, end);
+		
+		@if $start == null {
+			@media (max-width: $end) {
+				@content;
+			}
+		}
+		@else if $end == null {
+			@media (min-width: $start) {
+				@content;
+			}
+		}
+
+		@else {
+			@media (min-width: $start) and (max-width: $end) {
+				@content
+			}
+		}
+		$current-breakpoint: $default-breakpoint !global;
+	}
+
+	@else {
+		@warn "Invalid breakpoint `#{$breakpoint}`."
+	}
+}
+
+@mixin placeholder($name) {
+	$className: #{$name}-#{$current-breakpoint};
+	@if not index($placeholders, $className) {
+		$placeholders: append($placeholders, $className) !global;
+		@at-root {
+			%#{$className} {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin _($rule, $value) {
+	$finalValue: '';
+	$className: format-class-name(#{$rule}-#{str-replace(#{$value}, ' ', '-')});
+
+	@if type-of($value) == list {
+		@each $item in $value {
+			@if $finalValue == '' {
+				$finalValue: $finalValue + getValue($item);
+			}
+			@else {
+				$finalValue: $finalValue + ' ' + getValue($item);
+			}
+		}
+	}
+
+	@else {
+		$finalValue: getValue($value);
+	}
+	@if not index($placeholders, #{$className}-#{$current-breakpoint}) {
+		@if $rule == 'display' and $finalValue == 'flex' {
+			@include placeholder($className) {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				#{$rule}: #{$finalValue};
+			}
+		}
+		@if $rule == 'flex-direction' {
+			@if $finalValue == 'column' {
+				@include placeholder($className) {
+					-webkit-box-orient: vertical;
+					-webkit-box-direction: normal;
+					-ms-flex-direction: column;
+					flex-direction: column;
+				}
+			}
+			@if $finalValue == 'row' {
+				@include placeholder($className) {
+					-webkit-box-orient: horizontal;
+					-webkit-box-direction: normal;
+					-ms-flex-direction: row;
+					flex-direction: row;
+				}
+			}
+			@if $finalValue == 'column-reverse' {
+				@include placeholder($className) {
+					-webkit-box-orient: vertical;
+					-webkit-box-direction: reverse;
+					-ms-flex-direction: column-reverse;
+					flex-direction: column-reverse;
+				}
+			}
+			@if $finalValue == 'row-reverse' {
+				@include placeholder($className) {
+					-webkit-box-orient: horizontal;
+					-webkit-box-direction: reverse;
+					-ms-flex-direction: row-reverse;
+					flex-direction: row-reverse;
+				}
+			}
+        }
+        @if $rule == 'transition' {
+            @include placeholder($className) {
+                -webkit-transition: #{$finalValue};
+                -moz-transition: #{$finalValue};
+                transition: #{$finalValue};
+            }
+        }
+		@if $rule == 'flex' {
+			@if $finalValue == '0 0 auto' {
+				@include placeholder($className) {
+					-webkit-box-flex: 0;
+					-ms-flex: 0 0 auto;
+					flex: 0 0 auto;
+				}
+			}
+			@if $finalValue == '1 1 auto' {
+				@include placeholder($className) {
+					-webkit-box-flex: 1;
+					-ms-flex: 1 1 auto;
+					flex: 1 1 auto;
+				}
+			}
+		}
+		@if $rule == 'align-items' {
+			@if $finalValue == 'center' {
+				@include placeholder($className) {
+					-webkit-box-align: center;
+					-webkit-align-items: center;
+					-ms-flex-align: center;
+					-ms-grid-row-align: center;
+					align-items: center;
+				}
+			}
+			@if $finalValue == 'flex-start' {
+				@include placeholder($className) {
+					-webkit-box-align: start;
+					-webkit-align-items: flex-start;
+					-ms-flex-align: start;
+					-ms-grid-row-align: flex-start;
+					align-items: flex-start;
+				}
+			}
+		}
+		@if $rule == 'justify-content' {
+			@if $finalValue == 'center' {
+				@include placeholder($className) {
+					-webkit-box-pack: center;
+					-webkit-justify-content: center;
+					-ms-flex-pack: center;
+					justify-content: center;
+				}
+			}
+			@if $finalValue == 'flex-start' {
+				@include placeholder($className) {
+					-webkit-box-pack: start;
+					-webkit-justify-content: flex-start;
+					-ms-flex-pack: start;
+					justify-content: flex-start;
+				}
+			}
+			@if $finalValue == 'flex-end' {
+				@include placeholder($className) {
+					-webkit-box-pack: end;
+					-webkit-justify-content: flex-end;
+					-ms-flex-pack: end;
+					justify-content: flex-end;
+				}
+			}
+			@if $finalValue == 'space-between' {
+				@include placeholder($className) {
+					-webkit-box-pack: justify;
+					-webkit-justify-content: space-between;
+					-ms-flex-pack: justify;
+					justify-content: space-between;
+				}
+			}
+		}
+		@if $rule == 'flex-basis' {
+			@include placeholder($className) {
+				-webkit-flex-basis: #{$finalValue};
+				-ms-flex-preferred-size: #{$finalValue};
+				flex-basis: #{$finalValue};
+			}
+		}
+		@else {
+			@include placeholder($className) {
+				#{$rule}: #{$finalValue};
+			}
+		} 
+	}
+	// @if 
+
+	@extend %#{$className}-#{$current-breakpoint};
+}
+
+@function getValue($value) {
+	$finalValue: $value;
+	$existance: index(map-keys($mapVariables), $value);
+
+	@if $existance != null {
+		$finalValue: map-get($mapVariables, $value);
+	}
+
+	@return $finalValue;
+}
+
+@function format-class-name($className) {
+	$name: $className;
+	$chars: ('(', ')', '/', '`', '~', '&', '?', '.', ',');
+
+	@each $char in $chars {
+		@while str-index($name, $char) != null {
+			@if (str-index($name, $char) < str-length($name)) {
+				$name: str-replace($name, $char, '-');
+			}
+			@else {
+				$name: str-replace($name, $char, '');
+			}
+		}
+	}
+
+	@return $name;
+}
+
+@function str-replace($string, $search, $replace: '') {
+  	$index: str-index(#{$string}, $search);
+
+  	@if $index {
+    	@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  	}
+
+  	@return $string;
+}
