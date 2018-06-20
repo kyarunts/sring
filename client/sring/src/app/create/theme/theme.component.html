@@ -1,0 +1,9 @@
+<div class="theme">
+    <div 
+        *ngFor="let theme of themes"
+        class="theme__item"
+        (click)="emitSelected(theme.id)"
+    >
+        {{theme.name}}
+    </div>
+</div>

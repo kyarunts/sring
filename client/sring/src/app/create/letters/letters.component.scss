@@ -1,0 +1,32 @@
+@import 'dass';
+
+.letters {
+    &__nav {
+        @include _(display, flex);
+        @include _(justify-content, space-around);
+    }
+
+    &__item {
+        @include _(display, flex);
+        @include _(flex-direction, column);
+        @include _(align-items, center);
+        @include _(flex, 1 1 auto);
+        @include _(margin, 0 15px);
+    }
+
+    &__item-header {
+        @include _(height, 40px);
+        @include _(display, flex);
+        @include _(justify-content, center);
+        @include _(align-items, center);
+        @include _(width, 100%);
+        @include _(background-color, #33b172);
+        @include _(border-top-left-radius, 8px);
+        @include _(border-top-right-radius, 8px);
+        @include _(text-transform, uppercase);
+        @include _(font-size, 20px);
+        @include _(color, white);
+    }
+
+
+}

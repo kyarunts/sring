@@ -1,0 +1,32 @@
+@import 'dass';
+
+.create {
+    @include _(padding-top, 80px);
+
+    &__navigation {
+        @include _(display, flex);
+        @include _(justify-content, space-around);
+        @include _(margin-bottom, 40px);
+    }
+
+    &__navigation-item {
+        @include _(padding, 20px);
+        @include _(border, 1px solid gray);
+        @include _(border-radius, 8px);
+        @include _(cursor, pointer);
+
+        &--disabled {
+            @include _(cursor, auto);
+            @include _(background-color, gray);
+            @include _(pointer-events, none);
+        }
+
+        &--selected {
+            @include _(background-color, green);
+        }
+
+        &--active {
+            @include _(background-color, blue);
+        }
+    }
+}

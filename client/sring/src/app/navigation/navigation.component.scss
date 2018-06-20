@@ -15,7 +15,7 @@
         @include _(color, gray);
 
         &--active {
-            @include _(color, olive);
+            @include _(color, brown);
         }
     }
 }

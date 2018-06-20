@@ -1,0 +1,20 @@
+@import 'dass';
+
+.theme {
+    @include _(display, flex);
+    @include _(justify-content, center);
+
+    &__item {
+        @include _(display, flex);
+        @include _(justify-content, center);
+        @include _(align-items, center);
+        @include _(font-size, 30px);
+        @include _(height, 40vh);
+        @include _(flex-basis, 40%);
+        @include _(margin, 20px);
+        @include _(background-color, #15aace);
+        @include _(color, white);
+        @include _(cursor, pointer);
+        @include _(border-radius, 8px);
+    }
+}

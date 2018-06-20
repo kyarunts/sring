@@ -1,0 +1,11 @@
+<div class="name">
+    <input 
+        type="text"
+        placeholder="Enter the name"
+        [(ngModel)]="name"
+    >
+    <button
+        (click)="emitSelected()"
+        [disabled]="!name"
+    >NEXT</button>
+</div>

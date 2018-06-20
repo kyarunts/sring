@@ -1,0 +1,27 @@
+@import 'dass';
+
+.gender {
+    @include _(display, flex);
+    @include _(justify-content, space-around);
+
+    &__item {
+        @include _(display, flex);
+        @include _(flex-direction, column);
+        @include _(align-items, center);
+        @include _(justify-content, center);
+        @include _(flex-basis, 40%);
+        @include _(height, 60vh);
+        @include _(font-size, 40px);
+        @include _(color, #ffffb2);
+        @include _(border-radius, 10px);
+        @include _(cursor, pointer);
+        
+        &--male {
+            @include _(background-color, #5c5ce8);
+        }
+
+        &--female {
+            @include _(background-color, #ca26ad);
+        }
+    }
+}

@@ -1,3 +1,61 @@
-<p>
-  create works!
-</p>
+<section class="create">
+
+    <nav class="create__navigation">
+        <div
+            *ngFor="let state of states"
+            class="create__navigation-item"
+            [ngClass]="{
+                'create__navigation-item--disabled': !state.isActive,
+                'create__navigation-item--active': this.currentState === state.state,
+                'create__navigation-item--selected': state.isSelected
+            }"
+            (click)="changeState(state)"
+        >
+            {{state['title']}}
+        </div>
+    </nav>
+
+    <section class="create__form">
+        <sri-gender 
+            *ngIf="currentState === createStates.gender"
+            (select)="catchEmits($event, 'gender')"
+        >
+        </sri-gender>
+
+        <sri-name 
+            *ngIf="currentState === createStates.name"
+            (select)="catchEmits($event, 'name')"
+            [name]="selectedOptions.name"
+        >
+        </sri-name>
+        
+        
+        <sri-theme 
+            *ngIf="currentState === createStates.theme"
+            (select)="catchEmits($event, 'theme')"
+        >
+        </sri-theme>
+        
+        <sri-style
+            *ngIf="currentState === createStates.style"
+            (select)="catchEmits($event, 'style')"
+        >
+        </sri-style>
+        
+        <sri-letters 
+            *ngIf="currentState === createStates.letters"
+            [name]="'anush'"
+        >
+        </sri-letters>
+        
+        <sri-type *ngIf="currentState === createStates.type">
+        </sri-type>
+        
+        <sri-preview *ngIf="currentState === createStates.preview">
+        </sri-preview>
+        
+        <sri-order *ngIf="currentState === createStates.order">
+        </sri-order>
+    </section>
+    
+</section>
