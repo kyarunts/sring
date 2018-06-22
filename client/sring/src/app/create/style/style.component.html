@@ -1,9 +1,12 @@
 <div class="style">
     <div 
-        *ngFor="let style of styles"
+        *ngFor="let style of availableStyles"
         class="style__item"
         (click)="emitSelected(style.id)"
+        [ngStyle]="{'background': 'url(' + style.imageUrl + ')'}"    
     >
-        {{style.name}}
+        <div class="style__title">
+            {{style.title}}
+        </div>
     </div>
 </div>

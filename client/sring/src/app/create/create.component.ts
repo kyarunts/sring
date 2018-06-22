@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateStates, Genders, SelectedOptions, StateObject } from './create.data';
+import { CreateStates, Genders, SelectedOptions, StateObject, BookOptions } from './create.data';
+import { CreateService } from './create.service';
 
 @Component({
     selector: 'sri-create',
@@ -26,15 +27,22 @@ export class CreateComponent implements OnInit {
         theme: null,
         style: null,
     };
+    public bookOptions: BookOptions;
 
     public get currentStateObject(): StateObject {
         return this.states
             .filter((state: StateObject) => state.state === this.currentState)[0]
     }
 
-    constructor() { }
+    constructor(
+        private createService: CreateService,
+    ) { }
 
     ngOnInit() {
+        this.createService.getBookOptions()
+            .subscribe((data: BookOptions) => {
+                this.bookOptions = data;
+            })
     }
 
     public changeState(newState: StateObject): void {

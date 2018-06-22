@@ -1,9 +1,34 @@
 <div class="theme">
+    <div class="theme__suggested">
+        <div
+            *ngFor="let theme of suggested"
+            class="theme__item"
+            (click)="emitSelected(theme.id)"
+            [ngStyle]="{'background': 'url(' + theme.imageUrl + ')' }"
+        >
+            <div class="theme__title">
+                {{theme.title}}
+            </div>
+        </div>
+    </div>
+
+    <button (click)="changeDisplayCondition()">
+        {{ showAll ? 'Hide' : 'Load more'}}
+    </button>
+    
     <div 
-        *ngFor="let theme of themes"
-        class="theme__item"
-        (click)="emitSelected(theme.id)"
+        *ngIf="showAll"
+        class="theme__others"
     >
-        {{theme.name}}
+        <div 
+            *ngFor="let theme of others"
+            class="theme__item"
+            (click)="emitSelected(theme.id)"
+            [ngStyle]="{'background': 'url(' + theme.imageUrl + ')' }"
+        >
+            <div class="theme__title">
+                {{theme.title}}
+            </div>
+        </div>
     </div>
 </div>

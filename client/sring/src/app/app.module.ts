@@ -16,6 +16,9 @@ import { LettersComponent } from './create/letters/letters.component';
 import { TypeComponent } from './create/type/type.component';
 import { PreviewComponent } from './create/preview/preview.component';
 import { OrderComponent } from './create/order/order.component';
+import { IconsComponent } from './icons/icons.component';
+import { LetterOptionsComponent } from './create/letters/letter-options/letter-options.component';
+import { CreateService } from './create/create.service';
 
 @NgModule({
     declarations: [
@@ -32,13 +35,17 @@ import { OrderComponent } from './create/order/order.component';
         TypeComponent,
         PreviewComponent,
         OrderComponent,
+        IconsComponent,
+        LetterOptionsComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule
     ],
-    providers: [],
+    providers: [
+        CreateService,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

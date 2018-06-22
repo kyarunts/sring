@@ -10,3 +10,28 @@ a {
     @include _(cursor, pointer);
 }
 
+.sri-icon {
+    @include _(display, flex);
+    @include _(justify-content, center);
+    @include _(align-items, center);
+    @include _(width, 30px);
+    @include _(height, 30px);
+}
+
+svg {
+    @include _(width, 100%);
+    @include _(height, 100%);
+}
+
+button {
+    @include _(margin-top, 50px);
+    @include _(border, none);
+    @include _(border-radius, 8px);
+    @include _(font-size, 22px);
+    @include _(height, 40px);
+    @include _(background-color, orange);
+    @include _(color, white);
+    @include _(padding, 0 30px);
+    @include _(outline, none);
+    @include _(cursor, pointer);
+}

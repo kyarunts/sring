@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { ThemeObject, SelectedOptions } from '../create.data';
 
 @Component({
     selector: 'sri-theme',
@@ -7,15 +8,31 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class ThemeComponent implements OnInit {
 
-    @Input() public themes = [
-        {id: 1, name: 'Custom Theme 1'},
-        {id: 2, name: 'Custom Theme 2'},
-    ];
+    @Input() public selectedOptions: SelectedOptions; 
+    @Input() public themes: ThemeObject[];
     @Output() public select: EventEmitter<number> = new EventEmitter();
+
+    public suggested: ThemeObject[];
+    public others: ThemeObject[];
+    public showAll: boolean = false;
 
     constructor() { }
 
     ngOnInit() {
+        this.filterThemes();
+    }
+    
+    public changeDisplayCondition(): void {
+        this.showAll = !this.showAll;
+    }
+
+    private filterThemes(): void {
+        this.suggested = this.themes.filter((theme: ThemeObject) => {
+            return theme.genderID === this.selectedOptions.gender;
+        });
+        this.others = this.themes.filter((theme: ThemeObject) => {
+            return theme.genderID !== this.selectedOptions.gender;
+        });
     }
 
     public emitSelected(id: number): void {

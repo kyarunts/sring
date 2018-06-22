@@ -33,12 +33,16 @@
         <sri-theme 
             *ngIf="currentState === createStates.theme"
             (select)="catchEmits($event, 'theme')"
+            [themes]="bookOptions.themes"
+            [selectedOptions]="selectedOptions"
         >
         </sri-theme>
         
         <sri-style
             *ngIf="currentState === createStates.style"
             (select)="catchEmits($event, 'style')"
+            [styles]="bookOptions.styles"
+            [selectedOptions]="selectedOptions"
         >
         </sri-style>
         
@@ -48,7 +52,10 @@
         >
         </sri-letters>
         
-        <sri-type *ngIf="currentState === createStates.type">
+        <sri-type 
+            *ngIf="currentState === createStates.type"
+            [types]="bookOptions.types"
+        >
         </sri-type>
         
         <sri-preview *ngIf="currentState === createStates.preview">

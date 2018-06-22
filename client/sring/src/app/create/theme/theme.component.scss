@@ -1,20 +1,34 @@
 @import 'dass';
 
 .theme {
-    @include _(display, flex);
-    @include _(justify-content, center);
 
-    &__item {
+    &__suggested, 
+    &__others {
         @include _(display, flex);
-        @include _(justify-content, center);
-        @include _(align-items, center);
-        @include _(font-size, 30px);
-        @include _(height, 40vh);
+    }
+    
+    &__item {
+        @include _(justify-content, flex-start);
+        @include _(flex-direction, column);
+        @include _(background-size, cover !important);
+        @include _(background-position, center !important);
+        @include _(display, flex);
+        @include _(height, 30vh);
         @include _(flex-basis, 40%);
         @include _(margin, 20px);
         @include _(background-color, #15aace);
         @include _(color, white);
         @include _(cursor, pointer);
-        @include _(border-radius, 8px);
+        @include _(border, 1px solid #33b172);
+    }
+
+    &__title {
+        @include _(background-color, rgba(51, 177, 114, 0.9));
+        @include _(display, flex);
+        @include _(justify-content, center);
+        @include _(align-items, center);
+        @include _(text-transform, uppercase);
+        @include _(font-size, 16px);
+        @include _(padding, 10px 0);
     }
 }

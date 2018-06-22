@@ -1,0 +1,5 @@
+@import 'dass';
+
+.icons {
+    @include _(display, none);
+}

@@ -15,12 +15,16 @@ export class LettersComponent implements OnInit {
             });
         }
     };
-    public letters = [
-        
-    ]
+    public letters = [];
+
     constructor() { }
 
     ngOnInit() {
+        this.getLetterOptions(); 
+    }
+
+    public getLetterOptions(): void {
+
     }
 
 }

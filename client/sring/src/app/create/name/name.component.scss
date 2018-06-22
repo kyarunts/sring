@@ -12,16 +12,3 @@ input {
     @include _(height, 60px);
     @include _(font-size, 30px);
 }
-
-button {
-    @include _(margin-top, 50px);
-    @include _(border, none);
-    @include _(border-radius, 8px);
-    @include _(font-size, 22px);
-    @include _(height, 40px);
-    @include _(background-color, orange);
-    @include _(color, white);
-    @include _(padding, 0 30px);
-    @include _(outline, none);
-    @include _(cursor, pointer);
-}

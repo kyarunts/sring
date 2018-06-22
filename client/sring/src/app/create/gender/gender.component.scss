@@ -15,13 +15,16 @@
         @include _(color, #ffffb2);
         @include _(border-radius, 10px);
         @include _(cursor, pointer);
+        @include _(background-size, cover !important);
+        @include _(background-position, center !important);
+        @include _(border, 1px solid #33b172);
         
         &--male {
-            @include _(background-color, #5c5ce8);
+            background: url('https://i.pinimg.com/736x/c3/8b/74/c38b74ad7e335e126524c918f9bc94d2--boy-clipart.jpg');
         }
 
         &--female {
-            @include _(background-color, #ca26ad);
+            background: url('https://i.pinimg.com/736x/e9/ab/ef/e9abef2f9d241fdf358c8c088560bfa4--girl-clipart-girly-girls.jpg');
         }
     }
 }

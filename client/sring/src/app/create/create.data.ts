@@ -1,8 +1,45 @@
 export interface SelectedOptions {
     gender: Genders;
     name: string;
-    theme: number;
-    style: number;
+    theme: string;
+    style: string;
+}
+
+export interface ThemeObject {
+    id: string;
+    genderID: Genders;
+    title: string;
+    imageUrl: string;
+}
+
+export interface StyleObject {
+    id: string;
+    title: string;
+    genderIDs: Genders[];
+    themeIDs: string[];
+    imageUrl: string;
+}
+
+export interface LetterObject {
+    id: string,
+    genderID: string;
+    themeID: string;
+    styleID: string;
+    letter: string,
+    title: string,
+    imageUrl: string,
+}
+
+export interface TypeObject {
+    id: string;
+    title: string;
+    imageUrl: string;
+}
+
+export interface BookOptions {
+    themes: ThemeObject[];
+    styles: StyleObject[];
+    types: TypeObject[];
 }
 
 export interface StateObject {
