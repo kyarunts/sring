@@ -1,12 +1,37 @@
 @import 'dass';
 
+#homeVideo {
+    @include _(position, relative);
+    @include _(height, 100vh);
+    @include _(object-fit, cover);
+    @include _(width, auto);
+    @include _(min-width, 100vw);
+}
+
 .home {
+    @include _(position, relative);
 
     &__header {
-        background: url('https://images.unsplash.com/photo-1523920290228-4f321a939b4c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42e05c4b536f7f1d61f15792562001dd&auto=format&fit=crop&w=2256&q=80');
-        @include _(background-size, cover);
-        @include _(background-position, center);
-        @include _(height, 70vh);
+        @include _(position, absolute);
+        @include _(top, 0);
+        @include _(z-index, 2);
+        @include _(height, 100vh);
+        @include _(width, 100vw);
+        @include _(background-color, rgba(0, 0, 0, 0.5));
+        @include _(display, flex);
+        @include _(justify-content, center);
+        @include _(align-items, center);
+        @include _(color, white);
+        @include _(font-size, 50px);
     }
 
+    &__video-container {
+        @include _(width, 100vw);
+        @include _(height, 100vh);
+        @include _(overflow, hidden);
+        @include _(position, fixed);
+        @include _(top, 0);
+        @include _(right, 0);
+        @include _(z-index, -100);
+    }
 }

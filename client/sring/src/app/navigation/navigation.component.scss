@@ -7,12 +7,14 @@
     @include _(padding, 20px 0);
     @include _(position, absolute);
     @include _(width, 100%);
+    @include _(z-index, 2000);
+    @include _(background-color, rgba(0, 0, 0, 0.5));
 
     &__item {
         @include _(font-size, 24px);
         @include _(margin, 0 20px);
         @include _(text-decoration, uppercase);
-        @include _(color, gray);
+        @include _(color, white);
 
         &--active {
             @include _(color, brown);
