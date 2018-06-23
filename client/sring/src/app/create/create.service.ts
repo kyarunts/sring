@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 
-import { BookOptions } from "./create.data";
+import { BookOptions, LetterOption } from "./create.data";
 import { BookOptionsMock } from "./create.mock";
 
 @Injectable()
@@ -11,4 +11,7 @@ export class CreateService {
         return of(BookOptionsMock);
     }
 
+    public getLetters(): Observable<LetterOption> {
+        return of();
+    }
 }

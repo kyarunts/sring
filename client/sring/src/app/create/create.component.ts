@@ -26,6 +26,7 @@ export class CreateComponent implements OnInit {
         name: null,
         theme: null,
         style: null,
+        letters: null,
     };
     public bookOptions: BookOptions;
 

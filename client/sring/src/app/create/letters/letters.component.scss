@@ -9,11 +9,19 @@
 
     &__item {
         @include _(display, flex);
-        @include _(flex-direction, column);
+        @include _(border-radius, 50%);
+        @include _(box-sizing, border-box);
+        @include _(padding, 20px);
+        @include _(width, 100px);
+        @include _(height, 100px);
+        @include _(background-color, #33b172);
         @include _(align-items, center);
-        @include _(width, 200px);
+        @include _(justify-content, center);
         @include _(margin, 0 15px);
-        
+        @include _(color, white);
+        @include _(font-size, 30px);
+        @include _(font-weight, 600);
+        @include _(cursor, pointer);
     }
 
     &__item-header {
@@ -38,9 +46,8 @@
         @include _(width, 100%);
         @include _(border, 1px solid #33b172);
         @include _(box-sizing, border-box);
-        background: url('https://images.unsplash.com/photo-1500145588304-deb802b4af76?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7b3bd394fc6c42904174b046e1a70141&auto=format&fit=crop&w=1300&q=80');
-        @include _(background-position, center);
-        @include _(background-size, cover);
+        @include _(background-position, center !important);
+        @include _(background-size, cover !important);
     }
 
     &__icons-container {

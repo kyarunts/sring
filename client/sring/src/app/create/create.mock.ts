@@ -1,4 +1,4 @@
-import { BookOptions, Genders } from "./create.data";
+import { BookOptions, Genders, LetterOption } from "./create.data";
 
 export const BookOptionsMock: BookOptions = {
     themes: [
@@ -21,4 +21,9 @@ export const BookOptionsMock: BookOptions = {
         { id: '2', title: 'Soft cover', imageUrl: 'https://pictures.abebooks.com/SETANTABOOKS/12695276054.jpg'},
         { id: '3', title: 'Album', imageUrl: 'https://i.pinimg.com/originals/5e/1a/0b/5e1a0bf5d07e4793020485f8fa5aad29.jpg' },
     ],
-}
+};
+
+export const LetterOptionsMock: LetterOption[] = [
+    { id: '1',  genderIDs: [Genders.male, Genders.female], themeIDs: ['1', '3', '5', '7'], styleIDs: ['1', '2', '3'], letter: 'a', title: 'Ant animal', imageUrl: ''},
+    { id: '2',  genderIDs: [Genders.male, Genders.female], themeIDs: ['2', '4', '6', '8'], styleIDs: ['1', '2', '3'], letter: 'a', title: 'Ant animal', imageUrl: ''},
+]

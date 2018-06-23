@@ -3,6 +3,7 @@ export interface SelectedOptions {
     name: string;
     theme: string;
     style: string;
+    letters: Object;
 }
 
 export interface ThemeObject {
@@ -20,11 +21,11 @@ export interface StyleObject {
     imageUrl: string;
 }
 
-export interface LetterObject {
+export interface LetterOption {
     id: string,
-    genderID: string;
-    themeID: string;
-    styleID: string;
+    genderIDs: Genders[];
+    themeIDs: string[];
+    styleIDs: string[];
     letter: string,
     title: string,
     imageUrl: string,

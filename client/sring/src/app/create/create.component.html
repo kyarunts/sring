@@ -48,7 +48,8 @@
         
         <sri-letters 
             *ngIf="currentState === createStates.letters"
-            [name]="'anush'"
+            [name]="'ani'"
+            (select)="catchEmits($event, 'letters')"
         >
         </sri-letters>
         

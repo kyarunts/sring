@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'sri-letters',
@@ -15,6 +15,10 @@ export class LettersComponent implements OnInit {
             });
         }
     };
+    
+    @Output() public select: EventEmitter<any> = new EventEmitter();
+
+    public currentSelectedLetter: number = 0;
     public letters = [];
 
     constructor() { }
@@ -27,4 +31,17 @@ export class LettersComponent implements OnInit {
 
     }
 
+    public selectLetter(index: number): void {
+        this.currentSelectedLetter = index;
+    }
+
+    public toNextLetter(): void {
+        if (this.currentSelectedLetter < this.letters.length - 1) {
+            this.currentSelectedLetter++
+        }
+    }
+
+    public emitSelected(value: any): void {
+        this.select.emit({a: 1});
+    }
 }

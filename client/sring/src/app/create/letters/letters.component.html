@@ -1,10 +1,12 @@
 <div class="letters">
     <div class="letters__nav">
         <div 
-            *ngFor="let letter of letters"
+            *ngFor="let letter of letters; let i = index"
             class="letters__item"
+            (click)="selectLetter(i)"
         >
-            <div class="letters__item-header">
+            {{letter.letter}}
+            <!-- <div class="letters__item-header">
                 {{letter.letter}}
             </div>
             <div class="letters__item-body">
@@ -26,7 +28,26 @@
                         <span>Խմբագրել</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
+    </div>
+    
+    <sri-letter-options
+        [letter]="letters[currentSelectedLetter]['letter']"
+    ></sri-letter-options>
+
+    <div class="letters__buttons">
+        <button 
+            (click)="toNextLetter()"
+            class="letters__button"
+        >
+            Next letter
+        </button>
+        <button 
+            class="letters__button"
+            (click)="emitSelected()"
+        >
+            Use defaults and proceed
+        </button>
     </div>
 </div>
